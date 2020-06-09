@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>React Session</title>
+    <meta charset="UTF-8" />
+
+    
+
+    <script
+      crossorigin
+      src="https://unpkg.com/react@16/umd/react.development.js"
+    ></script>
+
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"
+    ></script>
+  </head>
+
+  <body>
+    <div id="app"></div>
+
+    <script>
+      const rootElement = document.getElementById("app");
+
+      const tdTag = ({ children }) => React.createElement("td", {className: "table table-bordered" , style: {width: "50px" ,height: "50px", border: "1px solid black"}}, children);
+
+      const thTag = ({ children }) => React.createElement("th", {className: "table table-bordered" , style: {width: "50px" ,height: "50px", border: "1px solid black"}}, children);
+
+      const trTag = ({ children }) => React.createElement("tr", {className: "table table-bordered" , style: {width: "50px" ,height: "50px", border: "1px solid black"}}, children);
+
+      const tBodyTag = ({ children }) =>
+        React.createElement("tbody", {}, children);
+
+      const tHeadTag = ({ children }) =>
+        React.createElement("thead", {}, children);
+
+      const tableTag = ({ children }) =>
+        React.createElement(
+          "table",
+          { className: "table table-bordered" },
+          children
+        );
+
+      const myRow = ({ fn, ln, email ,bow}) =>
+        trTag({
+          children: [
+            tdTag({ children: fn }),
+            tdTag({ children: ln }),
+            tdTag({ children:  email}),
+	    tdTag({ children:  bow})
+          ]
+        });
+
+      ReactDOM.render(
+        tableTag({
+          children: [
+            tHeadTag({
+              children: trTag({
+                children: [
+                  thTag({ children: "" }),
+                  thTag({ children: "" }),
+                  thTag({ children: "" }),
+		  thTag({ children: "" })
+                ]
+              })
+            }),
+            tBodyTag({
+              children: [
+                trTag({
+                  children: [
+                    tdTag({ children: "" }),
+                    tdTag({ children: "" }),
+                    tdTag({ children: "" }),
+		    tdTag({ children: "" })
+                  ]
+                }),
+                myRow({ fn: "", ln: "", email: "" })
+              ]
+            })
+          ]
+        }),
+        document.getElementById("app")
+      );
+
+
+      console.log(React);
+      console.log(ReactDOM);
+    </script>
+  </body>
+</html>
